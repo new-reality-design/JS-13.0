@@ -13,7 +13,6 @@ let income = 'Основная работа, фриланс.';
 //рассчитываемый период через запятую” сохранить в переменную addExpenses
 let possibleExpensesQuestion = prompt('“Перечислите возможные расходы за рассчитываемый период через запятую”', 'Подарки родственникам, путешествия, оплата за курсы.');
 let addExpenses = possibleExpensesQuestion;
-// let addExpenses = possibleExpensesQuestion.valueOf();
 
 
 
@@ -35,20 +34,38 @@ let expensesAmount2 = +prompt('“Во сколько это обойдется?
 //*6) Вычислить бюджет на месяц, учитывая обязательные расходы, 
 //сохранить в новую переменную budgetMonth и вывести результат в консоль
 let budgetMonth = money - (expensesAmount1 + expensesAmount1);
-console.log('budgetMonth: ', budgetMonth);
+
 
 
 //*7) Зная budgetMonth, посчитать за сколько месяцев будет достигнута цель
 // mission, вывести в консоль, округляя в большую сторону (методы объекта Math в помощь).
 let mission = 150000;
 let achievedMission = mission / budgetMonth;
-console.log('“Цель будет достигнута за ', Math.ceil(achievedMission), ' месяц/цев”');
+
 
 
 //*8) Поправить budgetDay учитывая бюджет на месяц, а не месячный доход. 
 //Вывести в консоль округлив в меньшую сторону 
 let budgetDay = budgetMonth / 30;
-console.log('budgetDay: ', Math.floor(budgetDay));
+
+
+let period = 12;
+
+
+
+console.log('Money: ', typeof money);
+console.log('Income: ', typeof income);
+console.log('Deposit: ', typeof deposit);
+console.log('AddExpenses length: ', addExpenses.length);
+console.log('Период равен: ', period, 'ти месяцам/месяцев. \nЦель - заработать ', mission, ' рублей.');
+console.log('AddExpenses: ', addExpenses.toLowerCase().split(', '));
+
+console.log('**********');
+
+console.log('Бюджет на месяц: ', budgetMonth);
+console.log('“Цель будет достигнута за ', Math.ceil(achievedMission), ' месяц/цев”');
+console.log('Бюджет на день: ', Math.floor(budgetDay));
+
 
 
 /** 
@@ -71,16 +88,5 @@ if (budgetDay >= 1200) {
 }
 
 
-let period = 12;
 
-
-console.log('*** Из урока 02- ***');
-console.log('Money: ', typeof money);
-console.log('Income: ', typeof income);
-console.log('Deposit: ', typeof deposit);
-console.log('AddExpenses length: ', addExpenses.length);
-console.log('Период равен: ', period, 'ти месяцам/месяцев. \nЦель - заработать ', mission, ' рублей.');
-console.log('AddExpenses: ');
-console.log(addExpenses.toLowerCase().split(', '));
-console.log('Дневной бюджет: ', Math.round(budgetDay));
 
