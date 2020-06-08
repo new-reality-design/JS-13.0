@@ -12,7 +12,8 @@ let income = 'Основная работа, фриланс.';
 //3) Спросить у пользователя “Перечислите возможные расходы за 
 //рассчитываемый период через запятую” сохранить в переменную addExpenses
 let possibleExpensesQuestion = prompt('“Перечислите возможные расходы за рассчитываемый период через запятую”', 'Подарки родственникам, путешествия, оплата за курсы.');
-let addExpenses = possibleExpensesQuestion.valueOf();
+let addExpenses = possibleExpensesQuestion;
+// let addExpenses = possibleExpensesQuestion.valueOf();
 
 
 
