@@ -1,84 +1,117 @@
 'use strict';
 
-/**
- 1) Объявить функцию getExpensesMonth. Функция возвращает сумму всех обязательных расходов за месяц
-2) Объявить функцию getAccumulatedMonth. Функция возвращает Накопления за месяц (Доходы минус расходы)
-3) Объявить переменную accumulatedMonth и присвоить ей результат вызова функции getAccumulatedMonth 
-4) Объявить функцию getTargetMonth. Подсчитывает за какой период будет достигнута цель, зная результат месячного накопления (accumulatedMonth) и возвращает результат
-5) Удалить из кода переменную budgetMonth
-6) budgetDay высчитываем исходя из значения месячного накопления (accumulatedMonth)
-7) Почистить консоль логи и добавить недостающие, должны остаться:
- - вызовы функции showTypeOf
- - Расходы за месяц вызов getExpensesMonth
- - Вывод возможных расходов в виде массива (addExpenses)
- - Cрок достижения цели в месяцах (результат вызова функции getTargetMonth) 
- - Бюджет на день (budgetDay)
- - вызов функции getStatusIncome
-8) Проверить, чтобы все работало и не было ошибок в консоли
- */
-
-//Доходы
-let monthlyIncomeQuestion = +prompt('“Ваш месячный доход?”', '33000'),
-  money = monthlyIncomeQuestion,
-  income = 'Основная работа, фриланс.';
-
-//Расходы
-let addExpenses = prompt('“Перечислите возможные статьи расходов через запятую”', 'Подарки родственникам, путешествия, оплата за курсы.');
-// addExpenses = possibleExpensesQuestion;
-// console.log('addExpenses: ', addExpenses);
-
-//Депозит
-let depositQuestion = confirm('“Есть ли у вас депозит в банке?”'),
-  deposit = depositQuestion;
-
-//Обязательные расходы
-let expensesQuestion1 = prompt('“Введите обязательную статью расходов?”', 'Счета и питание.'),
-  expensesAmount1 = +prompt('“Во сколько это обойдется?”', '5000'),
-  // console.log('expensesAmount1: ', expensesAmount1);
-  expensesQuestion2 = prompt('“Какие ещё у вас есть расходы?”', 'Транспорт'),
-  expensesAmount2 = +prompt('“Во сколько это обойдется?”', '5000');
-// console.log('expensesAmount2: ', expensesAmount2);
-
-
-//Вычислить бюджет на месяц, учитывая обязательные расходы, 
-//сохранить в новую переменную budgetMonth и *вывести результат в консоль*
-
-// let budgetMonth = money - (expensesAmount1 + expensesAmount1);
-// console.log('budgetMonth: ', budgetMonth);
-
-
-//Зная budgetMonth, посчитать за сколько месяцев будет достигнута цель
-// mission, *вывести в консоль*, округляя в большую сторону (методы объекта Math в помощь).
+let isNumber = function (n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+};
 
 let mission = 150000;
 let period = 12;
 
-
-// console.log('*******************');
-// console.log('Money: ', typeof money);
-// console.log('Income: ', typeof income);
-// console.log('Deposit: ', typeof deposit);
-
-
+//Доходы
+// let monthlyIncomeQuestion = +prompt('“Ваш месячный доход?”', '33000'),
+//   money = monthlyIncomeQuestion,
+//   income = 'Основная работа, фриланс.';
+let money, income = 'Основная работа, фриланс.';
 
 
-//1) Объявить функцию getExpensesMonth. Функция возвращает сумму всех обязательных расходов за месяц.
-const getExpensesMonth = function (amount1, amount2) {
-  return amount1 + amount2;
+//Расходы
+let addExpenses = prompt('“Перечислите возможные статьи расходов через запятую”', 'Подарки родственникам, путешествия, оплата за курсы.');
+// addExpenses = possibleExpensesQuestion;
+
+// console.log('addExpenses: ', addExpenses);
+//Депозит
+let depositQuestion = confirm('“Есть ли у вас депозит в банке?”'),
+  deposit = depositQuestion;
+
+
+/*Запись 2-
+  let start = function () {
+  money = prompt('“Ваш месячный доход?”');//+
+
+  while (isNaN(money) || money.trim() === '' || money === null) {
+    money = prompt('“Ваш месячный доход?”');
+  }
 };
-let expensesTotal = getExpensesMonth(expensesAmount1, expensesAmount2);
-console.log('expensesTotal: ', expensesTotal);//Оставить
+
+start();
+ */
+
+/*Запись 3-
+ let start = function () {
+ money = prompt('“Ваш месячный доход?”');//+
+
+ while (isNaN(parseFloat(money))) {
+   money = prompt('“Ваш месячный доход?”');
+ }
+};
+
+start();
+ */
+let start = function () {
+  money = prompt('“Ваш месячный доход?”');//+
+
+  while (!isNumber(money)) {
+    money = prompt('“Ваш месячный доход?”');
+  }
+};
+
+start();
+
+
+//Обязательные расходы
+// let expenses1 = prompt('“Введите обязательную статью расходов?”', 'Счета и питание.'),
+//   expenses1Amount = +prompt('“Во сколько это обойдется?”', '5000'),
+//   expenses2 = prompt('“Какие ещё у вас есть расходы?”', 'Транспорт'),
+//   expenses2Amount = +prompt('“Во сколько это обойдется?”', '5000');
+//Условия урока 4-
+//1) Объявить функцию getExpensesMonth. Функция возвращает сумму всех обязательных расходов за месяц.
+
+/*Запись 1-
+ let expenses1, expenses2;
+
+const getExpensesMonth = function () {
+  let sum = 0;
+
+  for (let i = 0; i < 2; i++) {
+
+    if (i === 0) {
+      expenses1 = prompt('“Введите обязательную статью расходов?”', 'Счета и питание.');
+      console.log('expenses1: ', expenses1);
+
+    } else if (i === 1) {
+      expenses2 = prompt('“Какие ещё у вас есть расходы?”', 'Транспорт');
+      console.log('expenses2: ', expenses2);
+    }
+    sum += +prompt('“Во сколько это обойдется?”');
+    console.log(sum);
+  }
+  console.log(sum);
+  return sum;
+};
+ */
+
+let expenses = [];
+
+const getExpensesMonth = function () {
+  let sum = 0;
+
+  for (let i = 0; i < 2; i++) {
+    expenses[i] = prompt('“Введите обязательную статью расходов?”', 'Счета. Транспорт.');
+    sum += +prompt('“Во сколько это обойдется?”', '2500');
+    console.log(sum);
+  }
+  console.log('Массив "статьи расходов": ', expenses);
+  console.log(sum);
+  return sum;
+};
+
+let expensesAmount = getExpensesMonth();
+console.log('expensesTotal/expensesAmount: ', expensesAmount);//Оставить
 
 
 // 2) Объявить функцию getAccumulatedMonth. Функция возвращает Накопления за месяц (Доходы минус расходы)
-
-
-// const getAccumulatedMonth = function (income, expenses) {
-//   let expensesTotal = expenses(expensesAmount1, expensesAmount2);
-//   return (income - expensesTotal);
-// };
 const getAccumulatedMonth = function (income) {
-  return (income - expensesTotal);
+  return (income - expensesAmount);
 };
 
 
@@ -101,7 +134,6 @@ let budgetDay = accumulatedMonth / 30;
 console.log('budgetDay: ', Math.floor(budgetDay));//Оставить
 
 
-
 // 7) Почистить консоль логи и добавить недостающие, должны остаться:
 //  - вызовы функции showTypeOf***
 //  - вызов функции getStatusIncome***
@@ -112,6 +144,7 @@ console.log('budgetDay: ', Math.floor(budgetDay));//Оставить
 
 
 console.log('AddExpenses: ', addExpenses.toLowerCase().split(', '));//Оставить
+
 
 //  - вызовы функции showTypeOf
 const showTypeOf = function (data) {
@@ -124,7 +157,6 @@ showTypeOf(deposit);
 
 //  - вызов функции getStatusIncome
 const getStatusIncome = function () {
-
   if (budgetDay >= 1200) {
     return ('“У вас высокий уровень дохода”');
   } else if (budgetDay >= 600 && budgetDay < 1200) {
