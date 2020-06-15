@@ -1,5 +1,11 @@
 'use strict';
 
+/*
+1) Переписать функцию start циклом do while **
+2) Добавить проверку что введённые данные являются числом, которые мы получаем на вопрос 'Во сколько это обойдется?’ в функции  getExpensesMonth
+3) Если getTargetMonth возвращает нам отрицательное значение, то вместо “Цель будет достигнута” необходимо выводить “Цель не будет достигнута”
+ */
+
 let isNumber = function (n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 };
@@ -47,12 +53,27 @@ start();
 
 start();
  */
+
+/*Запись 4- перед заданием
 let start = function () {
   money = prompt('“Ваш месячный доход?”');//+
 
   while (!isNumber(money)) {
     money = prompt('“Ваш месячный доход?”');
   }
+};
+
+start();
+ */
+let start = function () {
+  // money = prompt('“Ваш месячный доход?”');//+
+
+  do {
+    money = prompt('“Ваш месячный доход?”');
+    // console.log('“Ваш месячный доход такойто?”');
+  }
+  while (!isNumber(money));
+
 };
 
 start();
@@ -89,19 +110,42 @@ const getExpensesMonth = function () {
   return sum;
 };
  */
-
+/*
+2) Добавить проверку что введённые данные являются числом, которые мы получаем на вопрос 'Во сколько это обойдется?’ в функции getExpensesMonth.
+ */
 let expenses = [];
 
 const getExpensesMonth = function () {
   let sum = 0;
 
   for (let i = 0; i < 2; i++) {
-    expenses[i] = prompt('“Введите обязательную статью расходов?”', 'Счета. Транспорт.');
-    sum += +prompt('“Во сколько это обойдется?”', '2500');
-    console.log(sum);
+    let expensesResponse;
+    expenses[i] = prompt('“Введите обязательную статью расходов?”');
+
+    do {
+      expensesResponse = prompt('“Во сколько это обойдется?”');
+    }
+    while (!isNumber(expensesResponse));
+
+    sum += +expensesResponse;
   }
-  console.log('Массив "статьи расходов": ', expenses);
-  console.log(sum);
+
+  /*
+  for (let i = 0; i < 2; i++) {
+    let expensesResponse;
+    expenses[i] = prompt('“Введите обязательную статью расходов?”');
+
+    do {
+      expensesResponse = prompt('“Во сколько это обойдется?”');
+    }
+    while (!isNumber(expensesResponse));
+
+    sum += +expensesResponse;
+  }
+   */
+
+  // console.log('Массив "статьи расходов": ', expenses);
+  // console.log('SUM, ', sum);
   return sum;
 };
 
