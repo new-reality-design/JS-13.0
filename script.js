@@ -1,14 +1,7 @@
 'use strict';
 
-/*
-1) Переписать функцию start циклом do while **
-2) Добавить проверку что введённые данные являются числом, 
-которые мы получаем на вопрос 'Во сколько это обойдется?’ в функции  getExpensesMonth **
-3) Если getTargetMonth возвращает нам отрицательное значение, то вместо “Цель будет достигнута” 
-необходимо выводить “Цель не будет достигнута”
- */
-
-let isNumber = function (n) {
+//f isNumber
+const isNumber = function (n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 };
 
@@ -28,25 +21,21 @@ let depositQuestion = confirm('“Есть ли у вас депозит в ба
   deposit = depositQuestion;
 
 
+//f Start
 //1) Переписать функцию start циклом do while
 let start = function () {
-  // money = prompt('“Ваш месячный доход?”');//+
-
   do {
     money = prompt('“Ваш месячный доход?”');
-    // console.log('“Ваш месячный доход такойто?”');
   }
   while (!isNumber(money));
-
 };
-
 start();
 
 
-/*
-2) Добавить проверку что введённые данные являются числом, 
-которые мы получаем на вопрос 'Во сколько это обойдется?’ в функции getExpensesMonth.
- */
+
+// 2) Добавить проверку что введённые данные являются числом, 
+// которые мы получаем на вопрос 'Во сколько это обойдется?’ в функции getExpensesMonth.
+
 let expenses = [];
 
 //f getExpensesMonth
@@ -67,26 +56,27 @@ const getExpensesMonth = function () {
   return sum;
 };
 
-let expensesAmount = getExpensesMonth();
-console.log('expensesTotal/expensesAmount: ', expensesAmount);//Оставить
+let expensesTotal = getExpensesMonth();
+console.log('expensesTotal: ', expensesTotal);//Оставить
 
 
-//f getAccumulatedMonth
+//f getAccumulatedMonth 
+//от урока 4. Объявить функцию getAccumulatedMonth. 
+//Функция возвращает Накопления за месяц (Доходы минус расходы)
 const getAccumulatedMonth = function (income) {
-  return (income - expensesAmount);
+  return (income - expensesTotal);
 };
 
+//от урока 4. Объявить переменную accumulatedMonth и присвоить ей результат вызова функции getAccumulatedMonth 
 let accumulatedMonth = getAccumulatedMonth(money);
 
-/*
-3) Если getTargetMonth возвращает нам отрицательное значение, то вместо “Цель будет достигнута” 
-необходимо выводить “Цель не будет достигнута”
-*/
+
+// 3) Если getTargetMonth возвращает нам отрицательное значение, то вместо “Цель будет достигнута” 
+// - необходимо выводить “Цель не будет достигнута”
 
 //f getTargetMonth
 const getTargetMonth = function () {
-  let achievedTarget = Math.ceil(mission / accumulatedMonth); showTypeOf
-  // achievedTarget = Math.ceil(achievedTarget);
+  let achievedTarget = Math.ceil(mission / accumulatedMonth);
 
   if (achievedTarget < 0) {
     return console.log('“Цель не будет достигнута”');
@@ -95,16 +85,10 @@ const getTargetMonth = function () {
   }
 };
 getTargetMonth();
-// getTargetMonth(mission, accumulatedMonth);
-
-// console.log('Цель будет достигнута за ', getTargetMonth(mission, accumulatedMonth), ' месяцев.');//ConsoleLog- Оставить
-// let achievedTargetResult = getTargetMonth(mission, accumulatedMonth);
-// console.log('Cрок достижения цели в месяцах (результат вызова функции getTargetMonth): ', achievedTargetResult);//ConsoleLog- Оставить
 
 
 let budgetDay = accumulatedMonth / 30;
 console.log('budgetDay: ', Math.floor(budgetDay));//ConsoleLog- Оставить
-
 
 console.log('AddExpenses: ', addExpenses.toLowerCase().split(', '));//ConsoleLog- Оставить
 
