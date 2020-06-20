@@ -41,24 +41,44 @@ let appData = {
     let addExpenses = prompt('“Перечислите возможные статьи расходов через запятую”', 'Подарки родственникам, путешествия, оплата за курсы.');
     appData.addExpenses = addExpenses.toLowerCase().split(', ');
     appData.deposit = confirm('“Есть ли у вас депозит в банке?”');
-  },
-  //
-  getExpensesMonth: function () {
-    let sum = 0;
-    let expenses = [];//????  
+    /*
+    7) Перенести цикл из метода getExpensesMonth в метод asking, и переписать цикл таким образом чтобы результат записывался в объект  appData.expenses
+в формате:
+
+expenses: {
+    “ответ на первый вопрос” : “ответ на второй вопрос”,
+    “ответ на первый вопрос” : “ответ на второй вопрос”
+}
+     */
     for (let i = 0; i < 2; i++) {
-      let expensesResponse;
-      expenses[i] = prompt('“Введите обязательную статью расходов?”');
+      let expensesResponse;//Переменная для ответа-суммы
+      let expenseName = prompt('“Введите обязательную статью расходов?”');//Переменная с ответом- текстом
       do {
         expensesResponse = prompt('“Во сколько это обойдется?”');
       }
       while (!isNumber(expensesResponse));
-      sum += +expensesResponse;
+      appData.expenses[expenseName] = +expensesResponse;
+      console.log('appData.expenses: ', appData.expenses);////////
     }
-    console.log('expenses: ', expenses);////////
-    return sum;
   },
-  //
+
+  /*
+  8) Переписать метод getExpensesMonth: с помощью цикла считаем сумму всех обязательных расходов и сохраняем результат в свойство expensesMonth нашего объекта
+для того, чтобы посчитать сумму используйте цикл for in
+   */
+  getExpensesMonth: function () {
+    let sum = 0;
+
+    for (let key in appData.expenses) {
+      console.log(key);
+      console.log(appData.expenses[key]);
+      sum += appData.expenses[key];
+    }
+    return (appData.expensesMonth = sum);
+  },
+  /*
+  9) getAccumulatedMonth переименовать в getBudget. Этот метод будет высчитывать значения свойств budgetMonth и budgetDay, чтобы вычислить значения используем только свойства объекта (никаких внешних переменных)
+   */
   getAccumulatedMonth: function (income) {
     return (income - expensesTotalMonth);
   },
@@ -86,7 +106,10 @@ let appData = {
   }
 };
 
-let expensesTotalMonth = appData.getExpensesMonth();
+//6) Сразу после объекта выполните вызов appData.asking();
+appData.asking();
+
+let expensesTotalMonth = appData.getExpensesMonth();//0?
 console.log('expensesTotalMonth: ', expensesTotalMonth);//Оставить
 
 //от урока 4. Объявить переменную accumulatedMonth и присвоить ей результат вызова функции getAccumulatedMonth 
@@ -99,7 +122,7 @@ appData.getTargetMonth();
 let budgetDay = accumulatedMonth / 30;
 console.log('budgetDay: ', Math.floor(budgetDay));//ConsoleLog- Оставить
 
-console.log(appData.getStatusIncome());
+console.log('Уровень дохода: ', appData.getStatusIncome());
 
 //Цель и сроки. DELETE
 // let mission = 150000;
