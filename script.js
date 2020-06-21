@@ -12,7 +12,7 @@ let money;
 //f Start
 let start = function () {
   do {
-    money = prompt('“Ваш месячный доход?”');
+    money = +prompt('“Ваш месячный доход?”');
   }
   while (!isNumber(money));
 };
@@ -68,10 +68,10 @@ expenses: {
    */
   getExpensesMonth: function () {
     let sum = 0;
-
+    console.log('stroka 71 appData[budget]', appData['budget']);
     for (let key in appData.expenses) {
       console.log(key);
-      console.log(appData.expenses[key]);
+      console.log(appData.expenses[key]);//значение
       sum += appData.expenses[key];
     }
     return (appData.expensesMonth = sum);
