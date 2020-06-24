@@ -81,10 +81,10 @@ let appData = {
     let addExpensesToStr = appData.addExpenses.map(item => {
       return item.substring(0, 1).toUpperCase() + item.slice(1);
     });
-    // addExpensesToStr.join(', ');
-    console.log('(addExpenses) вывести строкой в консоль: ', addExpensesToStr.join(', '));
-    // appData.addExpenses = addExpensesToStr;
-    // console.log('str 83: appData.addExpenses = addExpensesToStr: ', appData.addExpenses = addExpensesToStr);
+
+    // console.log('(addExpenses) вывести строкой в консоль: ', addExpensesToStr.join(', '));
+    appData.addExpenses = addExpensesToStr;
+    console.log('(addExpenses) вывести строкой в консоль: ', appData.addExpenses.join(', '));
 
     appData.deposit = confirm('“Есть ли у вас депозит в банке?”');
 
