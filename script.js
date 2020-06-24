@@ -39,16 +39,22 @@ let appData = {
   percentDeposit: '',
   moneyDeposit: '',
   //
+  /*
+  1) Сделать проверку при получении данных:
+   - наименование дополнительного источника заработка
+   - сумма дополнительного заработка
+   - ввод статьи обязательных расходов
+   - годовой процент депозита
+   - сумма депозита
+   */
   asking: function () {
 
-    //Урок 8- вопрос про дополнительный заработок
     if (confirm('Есть ли у вас дополнительный источник заработка?')) {
 
       let itemIncome;
 
       do {
         itemIncome = prompt('Какой именно?', 'Садоводство');
-        //Продолжаем спрашивать, пока возвращается полноценное число ил нулл или пустая строка.
       } while (
         (itemIncome === '' || itemIncome === null || isNumber(itemIncome) || itemIncome.trim() === '' || isNumber(itemIncome.trim()))
       );
@@ -63,45 +69,31 @@ let appData = {
       appData.income[itemIncome] = cashIncome;
     }
 
-    /**
-     * 2) Возможные расходы (addExpenses) вывести строкой в консоль каждое слово с большой буквы слова разделены запятой и пробелом
-loop-splice-join
-
-Пример (Интернет, Такси, Коммунальные расходы)
-     */
+    /*
+    2) Возможные расходы (addExpenses) вывести строкой в консоль каждое слово с большой буквы слова разделены запятой и пробелом
+    Пример (Интернет, Такси, Коммунальные расходы)
+    */
 
     let addExpenses = prompt('“Перечислите возможные статьи расходов через запятую”', 'Подарки, путешествия, кУРСы, массаж');
     appData.addExpenses = addExpenses.toLowerCase().split(', ');
-    console.log('str 75- appData.addExpenses', appData.addExpenses);
+    // console.log(appData.addExpenses);
 
     let addExpensesToStr = appData.addExpenses.map(item => {
       return item.substring(0, 1).toUpperCase() + item.slice(1);
     });
-    console.log('str 79- addExpensesToStr: ', addExpensesToStr.join(', '));
+    // addExpensesToStr.join(', ');
+    console.log('(addExpenses) вывести строкой в консоль: ', addExpensesToStr.join(', '));
+    // appData.addExpenses = addExpensesToStr;
+    // console.log('str 83: appData.addExpenses = addExpensesToStr: ', appData.addExpenses = addExpensesToStr);
 
-    appData.addExpenses = addExpensesToStr;
-    console.log('str 83: appData.addExpenses = addExpensesToStr: ', appData.addExpenses = addExpensesToStr);
-
-
-
-    // appData.addExpenses.forEach(item => {
-    //   let result = item.substring(0, 1).toUpperCase() + item.slice(1);
-    //   console.log('str 85', result.join(', '));
-    // });
-
-
-    //let separateWords = appData.addExpenses.map(function(item) {
-    //   return ' ' + item[0].toUpperCase() + item.slice(1).toLowerCase();
-    // });
     appData.deposit = confirm('“Есть ли у вас депозит в банке?”');
 
 
     for (let i = 0; i < 2; i++) {
-      let expensesResponse;//Переменная для ответа-суммы// cashExpenses у Максима
 
+      let expenseName;//Переменная для ответа-текста
+      let expensesResponse;//Переменная для ответа-суммы
 
-      let expenseName;//Переменная с ответом- текстом, ItemExpenses у Максима 
-      // let expenseName = prompt('“Введите обязательную статью расходов?”');//Переменная с ответом- текстом, ItemExpenses у Максима 
       do {
         expenseName = prompt('“Введите обязательную статью расходов?”');
       } while (
@@ -117,10 +109,6 @@ loop-splice-join
     }
   },
 
-  /*
-  8) Переписать метод getExpensesMonth: с помощью цикла считаем сумму всех обязательных расходов и сохраняем результат в свойство expensesMonth нашего объекта
-для того, чтобы посчитать сумму используйте цикл for in
-   */
   getExpensesMonth: function () {
     let sum = 0;
 
@@ -130,9 +118,6 @@ loop-splice-join
     appData.expensesMonth = sum;
   },
 
-  /*
-  9) getAccumulatedMonth переименовать в getBudget. Этот метод будет высчитывать значения свойств budgetMonth и budgetDay, чтобы вычислить значения используем только свойства объекта (никаких внешних переменных)
-   */
   getBudget: function () {
     appData.budgetMonth = appData.budget - appData.expensesMonth;
     appData.budgetDay = Math.floor(appData.budgetMonth / 30);
@@ -162,7 +147,6 @@ loop-splice-join
     }
   },
 
-  //Urok-8
   getInfoDeposit: function () {
     if (appData.deposit) {
       do {
@@ -181,9 +165,6 @@ loop-splice-join
 };
 
 
-
-
-//Сразу после объекта выполните вызов appData.asking();
 appData.asking();
 
 appData.getExpensesMonth();
@@ -203,37 +184,10 @@ console.log('*** Уровень дохода: ***');
 appData.getStatusIncome();
 
 
-
-console.log('ПРОВЕРКА calcSavedMoney-', appData.calcSavedMoney());
-console.log('Годовой %-', appData.percentDeposit);
-console.log('Сумма залога-', appData.moneyDeposit);
-
-//13) Используя цикл for in для объекта (appData), вывести в консоль сообщение "Наша программа включает в себя данные: " (вывести все свойства и значения)
-
 console.log('Наша программа включает в себя данные: ');
 for (let key in appData) {
   console.log('Ключ: ', key, ' и его Значение: ', appData[key]);
 }
 
 
-/*
-1) Сделать проверку при получении данных:
-
-   - наименование дополнительного источника заработка
-   - сумма дополнительного заработка
-   - ввод статьи обязательных расходов
-   - годовой процент депозита
-   - сумма депозита
-
-
-
-Что значит проверка данных: где должен быть текст там только текст, где цифры только цифры!
-Если проверку не прошло, то переспрашивать!
-
-2) Возможные расходы (addExpenses) вывести строкой в консоль каждое слово с большой буквы слова разделены запятой и пробелом
-loop-splice-join
-
-Пример (Интернет, Такси, Коммунальные расходы)
-
- */
 
