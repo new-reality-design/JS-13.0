@@ -1,0 +1,69 @@
+Задание по проекту, получить каждый элемент в отдельную переменную:
+
+
+Кнопку "Рассчитать" через // id #start
+
+Кнопки “+” (плюс) через Tag, каждую в своей переменной. //Их 2 штуки. Получить все элементы и рассовать по перемнным [0], [1]? start is a button too.
+
+Чекбокс по id через querySelector // #deposit-check
+
+Поля для ввода возможных доходов (additional_income-item) при помощи querySelectorAll
+//class additional_income-item
+
+Каждый элемент в правой части программы через класс, которые имеют в имени класса "-value", начиная с class="budget_day-value" и заканчивая class="target_month-value">
+
+1)Доход за месяц
+result-total budget_month-value
+
+2)Дневной бюджет
+result-total budget_day-value
+
+3)Расход за месяц
+result-total expenses_month-value
+
+4)Возможные доходы
+result-total additional_income-value
+
+5)Возможные расходы
+result-total additional_expenses-value
+
+6)Накопления за период
+result-total income_period-value
+
+7)Срок достижения цели в месяцах
+result-total target_month-value
+
+
+//////
+Оставшиеся поля через querySelector каждый в отдельную переменную:
+
+поля ввода (input) с левой стороны и не забудьте про range.
+1)Месячный доход* сумма-
+salary-amount
+
+2)Дополнительный доход
+наименование- income-title
+сумма- income-amount
+
+3)Обязательные расходы
+наименование- expenses-title
+сумма- expenses-amount
+
+4)Возможные расходы (перечислите через запятую)- название
+additional_expenses-item
+
+5)Цель- сумма
+target-amount
+
+Input type range-
+period-select
+
+
+
+
+Проверить, чтобы все работало и не было ошибок в консоли
+
+
+
+Добавить папку с уроком на свой GitHub
+
