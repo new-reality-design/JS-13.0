@@ -17,13 +17,7 @@ let start = function () {
 };
 start();
 
-/*Функции getExpensesMonth,
- * getAccumulatedMonth,
- * getTargetMonth,
- * getStatusIncome
- *-сделать методами объекта AppData**/
-
-//object appData
+//обьект appData
 let appData = {
   budget: +money,
   income: {},
@@ -39,6 +33,7 @@ let appData = {
   percentDeposit: '',
   moneyDeposit: '',
   //
+
   /*
   1) Сделать проверку при получении данных:
    - наименование дополнительного источника заработка
@@ -76,13 +71,11 @@ let appData = {
 
     let addExpenses = prompt('“Перечислите возможные статьи расходов через запятую”', 'Подарки, путешествия, кУРСы, массаж');
     appData.addExpenses = addExpenses.toLowerCase().split(', ');
-    // console.log(appData.addExpenses);
 
     let addExpensesToStr = appData.addExpenses.map(item => {
       return item.substring(0, 1).toUpperCase() + item.slice(1);
     });
 
-    // console.log('(addExpenses) вывести строкой в консоль: ', addExpensesToStr.join(', '));
     appData.addExpenses = addExpensesToStr;
     console.log('(addExpenses) вывести строкой в консоль: ', appData.addExpenses.join(', '));
 
@@ -173,7 +166,7 @@ appData.getBudget();
 
 appData.getInfoDeposit();
 
-//('*** ИТОГО: ***');
+
 console.log('*** Расходы за месяц: ***');
 console.log(appData.expensesMonth);
 
