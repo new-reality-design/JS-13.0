@@ -76,8 +76,8 @@ let appData = {
       return item.substring(0, 1).toUpperCase() + item.slice(1);
     });
 
-    appData.addExpenses = addExpensesToStr;
-    console.log('(addExpenses) вывести строкой в консоль: ', appData.addExpenses.join(', '));
+    // appData.addExpenses = addExpensesToStr;
+    console.log('(addExpenses - ToString) вывести строкой в консоль: ', addExpensesToStr.join(', '));
 
     appData.deposit = confirm('“Есть ли у вас депозит в банке?”');
 
