@@ -1,9 +1,94 @@
 'use strict';
 
+//Урок 9- сложить в переменные нужные элементы-
+//1 Кнопку "Рассчитать" через id
+const calculate = document.getElementById('start');
+console.log('calculate: ', calculate);
+
+//2 Кнопки “+” (плюс) через Tag, каждую в своей переменной.
+// const buttons = document.getElementsByTagName('button');
+// console.log('buttons: ', buttons);
+const incomeAdd = document.getElementsByTagName('button')[0];
+console.log('incomeAdd: ', incomeAdd);
+const expensesAdd = document.getElementsByTagName('button')[1];
+console.log('expensesAdd: ', expensesAdd);
+
+//3 Чекбокс по id через querySelector // #deposit-check
+const depositCheck = document.querySelector('#deposit-check');
+
+//4 Поля для ввода возможных доходов (additional_income-item) при помощи querySelectorAll
+//class additional_income-item
+const additionalIncomeItems = document.querySelectorAll('.additional_income-item');
+console.log('additionalIncomeItems: ', additionalIncomeItems);
+
+//5 Каждый элемент в правой части программы через класс, которые имеют в имени класса "-value", начиная с class="budget_day-value" и заканчивая class="target_month-value">
+
+//All_Values:
+//1 Доход за месяц**
+const budgetMonthValue = document.querySelector('.budget_month-value');
+console.log('budgetMonthValue: ', budgetMonthValue);
+//2 Дневной бюджет**
+const budgetDayValue = document.querySelector('.budget_day-value');
+console.log('budgetDayValue: ', budgetDayValue);
+//3 Расход за месяц**
+const expensesMonthValue = document.querySelector('.expenses_month-value');
+console.log('expensesMonthValue: ', expensesMonthValue);
+//4 Возможные доходы**
+const additionalIncomeValue = document.querySelector('.additional_income-value');
+console.log('additionalIncomeValue: ', additionalIncomeValue);
+//5 Возможные расходы**
+const additionalExpensesValue = document.querySelector('.additional_expenses-value');
+console.log('additionalExpensesValue: ', additionalExpensesValue);
+//6 Накопления за период**
+const incomePeriodValue = document.querySelector('.income_period-value');
+console.log('incomePeriodValue: ', incomePeriodValue);
+//7 Срок достижения цели в месяцах
+const targetMonthValue = document.querySelector('.target_month-value');
+console.log('targetMonthValue: ', targetMonthValue);
+
+
+//6 Оставшиеся поля через querySelector каждый в отдельную переменную:
+//поля ввода (input) с левой стороны и не забудьте про range.
+
+//1 Месячный доход- сумма
+const salaryAmount = document.querySelector('.salary-amount');
+console.log('salaryAmount: ', salaryAmount);
+
+//2 Дополнительный доход- наименование
+const incomeTitle = document.querySelector('.income-title');
+console.log('incomeTitle: ', incomeTitle);
+
+//3 Дополнительный доход- сумма
+const incomeAmount = document.querySelector('.income-amount');
+console.log('incomeAmount: ', incomeAmount);
+
+//4 Обязательные расходы- наименование
+const expensesTitle = document.querySelector('.expenses-title');
+console.log('expensesTitle: ', expensesTitle);
+
+//5 Обязательные расходы- сумма
+const expensesAmount = document.querySelector('.expenses-amount');
+console.log('expensesAmount: ', expensesAmount);
+
+//6 Возможные расходы - название
+const additionalExpensesItem = document.querySelector('.additional_expenses-item');
+console.log('additionalExpensesItem: ', additionalExpensesItem);
+
+//7 Цель- сумма
+const targetAmount = document.querySelector('.target-amount');
+console.log('targetAmount: ', targetAmount);
+
+//8 Период расчета (бегунок)
+const periodSelect = document.querySelector('.period-select');
+
+
 //f isNumber
 const isNumber = function (n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 };
+
+
+//******************************************************************************/
 
 //Доходы
 let money;
