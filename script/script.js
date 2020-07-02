@@ -1,5 +1,7 @@
 'use strict';
 
+//Lesson 11 check 
+
 //Урок 9- сложить в переменные нужные элементы-
 //1 Кнопку "Рассчитать" через id
 const calculate = document.getElementById('start');
