@@ -63,7 +63,23 @@ let appData = {
   expensesMonth: 0,
   percentDeposit: '',
   moneyDeposit: '',
+  resetObject: function () {
+    appData.budget = 0,
+      appData.income = {},
+      appData.incomeMonth = 0,
+      appData.addIncome = [],
+      appData.expenses = {},
+      appData.addExpenses = [],
+      appData.deposit = false,
+      appData.budgetDay = 0,
+      appData.budgetMonth = 0,
+      appData.expensesMonth = 0,
+      appData.percentDeposit = '',
+      appData.moneyDeposit = '';
+  },
   start: function () {
+
+    appData.resetObject();
 
     appData.budget = +salaryAmount.value;
 
@@ -125,8 +141,9 @@ let appData = {
   //-перебором всех элементов с классом expensesItems
   getExpenses: function () {
     expensesItems.forEach(function (item) {
-      let itemExpenses = item.querySelector('.expenses-title').value;//Наименование
-      let cashExpenses = item.querySelector('.expenses-amount').value;//Сумма
+      let itemExpenses = item.querySelector('.expenses-title').value,//Наименование
+        cashExpenses = item.querySelector('.expenses-amount').value;//Сумма
+
       //Проверка на наличие данных-
       if (itemExpenses !== '' && cashExpenses !== '') {
         appData.expenses[itemExpenses] = cashExpenses;//Назначение- вместо цикла в asking
@@ -138,9 +155,9 @@ let appData = {
   //Функция getIncome
   getIncome: function () {
     incomeItems.forEach(function (item) {
-      let itemIncome, cashIncome;
-      itemIncome = item.querySelector('.income-title').value;
-      cashIncome = item.querySelector('.income-amount').value;
+      // let itemIncome, cashIncome;
+      let itemIncome = item.querySelector('.income-title').value,
+        cashIncome = item.querySelector('.income-amount').value;
 
       if (itemIncome !== '' && cashIncome !== '') {
         appData.income[itemIncome] = cashIncome;
