@@ -1,5 +1,7 @@
 'use strict';
 
+//Git init
+
 let start = document.getElementById('start');
 start.setAttribute('disabled', 'disabled');
 
