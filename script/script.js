@@ -75,18 +75,18 @@ let appData = {
   percentDeposit: '',
   moneyDeposit: '',
   resetObject: function () {
-    appData.budget = 0,
-      appData.income = {},
-      appData.incomeMonth = 0,
-      appData.addIncome = [],
-      appData.expenses = {},
-      appData.addExpenses = [],
-      appData.deposit = false,
-      appData.budgetDay = 0,
-      appData.budgetMonth = 0,
-      appData.expensesMonth = 0,
-      appData.percentDeposit = '',
-      appData.moneyDeposit = '';
+    this.budget = 0,
+      this.income = {},
+      this.incomeMonth = 0,
+      this.addIncome = [],
+      this.expenses = {},
+      this.addExpenses = [],
+      this.deposit = false,
+      this.budgetDay = 0,
+      this.budgetMonth = 0,
+      this.expensesMonth = 0,
+      this.percentDeposit = '',
+      this.moneyDeposit = '';
   },
 
   start: function () {
@@ -122,10 +122,6 @@ let appData = {
     depositCheck.setAttribute('disabled', 'disabled');
     periodSelect.setAttribute('disabled', 'disabled');
 
-    // cancel.addEventListener('click', function () {
-    //   console.log('Нажата кнопка Отменить');
-    //   console.log(depositCheck.value);
-    // });
     cancel.addEventListener('click', this.reset);
   },
 
@@ -157,9 +153,6 @@ let appData = {
     periodSelect.value = 1;
     periodAmount.innerHTML = periodSelect.value;
 
-    // console.log('Длина income items', incomeItems.length);
-    // console.log(' income items', incomeItems);
-
     //remove Income fields
     let plus = btnPlus[0];
 
@@ -182,6 +175,9 @@ let appData = {
 
     expensesPlus.style.display = 'block';
     incomePlus.style.display = 'block';
+
+    // this.budgetMonth = 0;
+    // incomePeriodValue.value = '';
   },
 
   //Функция ValidateSalaryAmount
@@ -213,7 +209,6 @@ let appData = {
     //Удаление кнопки-expensesPlus
     if (expensesItems.length === 3) {
       expensesPlus.style.display = 'none';
-      //display: inline-block;incomePlus.style.display = 'none';
     }
   },
 
@@ -312,27 +307,20 @@ let appData = {
 
   //Функция для RangeInputValue
   getRangeValue: function () {
-    console.log('getRangeValue STR 287 18:24', this);
     periodAmount.innerHTML = periodSelect.value;
-    incomePeriodValue.value = appData.calcSavedMoney();//!!! 293
+    incomePeriodValue.value = this.calcSavedMoney();
   }
 };
 
 //Обработчики событий
 
-start.addEventListener('click', appData.validateSalaryAmount);
-
-//1 Привязать контекст вызова функции start к appData 
 let calculateData = appData.start.bind(appData);
 start.addEventListener('click', calculateData);
-
-// start.addEventListener('click', appData.start);
 
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
 incomePlus.addEventListener('click', appData.addIncomeBlock);
 
 let changeRangeValue = appData.getRangeValue.bind(appData);
 periodSelect.addEventListener('change', changeRangeValue);
-// periodSelect.addEventListener('change', appData.getRangeValue);
 
 salaryAmount.addEventListener('input', appData.validateSalaryAmount);
