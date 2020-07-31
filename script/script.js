@@ -1,7 +1,5 @@
 'use strict';
 
-//Git init
-
 let start = document.getElementById('start');
 start.setAttribute('disabled', 'disabled');
 
@@ -92,7 +90,6 @@ let appData = {
   },
 
   start: function () {
-    // this.validateSalaryAmount();
     this.resetObject();
 
     this.budget = +salaryAmount.value;
@@ -109,7 +106,6 @@ let appData = {
   },
 
   //Функция showCancelBtn
-
   showCancelBtn: function () {
 
     let allDataInputs = dataInputsSection.querySelectorAll('input[type=text]');
@@ -123,10 +119,13 @@ let appData = {
 
     expensesPlus.setAttribute('disabled', 'disabled');
     incomePlus.setAttribute('disabled', 'disabled');
+    depositCheck.setAttribute('disabled', 'disabled');
+    periodSelect.setAttribute('disabled', 'disabled');
 
-    cancel.addEventListener('click', function () {
-      console.log('Нажата кнопка Отменить');
-    });
+    // cancel.addEventListener('click', function () {
+    //   console.log('Нажата кнопка Отменить');
+    //   console.log(depositCheck.value);
+    // });
     cancel.addEventListener('click', this.reset);
   },
 
@@ -147,29 +146,42 @@ let appData = {
     });
 
     start.style.display = 'block';
+    start.setAttribute('disabled', 'disabled');
     cancel.style.display = 'none';
 
     expensesPlus.removeAttribute('disabled');
     incomePlus.removeAttribute('disabled');
+    depositCheck.removeAttribute('disabled');
+    periodSelect.removeAttribute('disabled');
 
     periodSelect.value = 1;
     periodAmount.innerHTML = periodSelect.value;
 
-    console.log('dlina income items', incomeItems.length);
-    console.log(' income items', incomeItems);
+    // console.log('Длина income items', incomeItems.length);
+    // console.log(' income items', incomeItems);
+
+    //remove Income fields
+    let plus = btnPlus[0];
 
     incomeItems.forEach(item => {
-      let plus = btnPlus[0],
-        minus = btnPlus[1];
-      if (item !== incomeItems[0] && item !== plus && item !== minus) {
+      if (item !== incomeItems[0] && item !== plus) {
         item.parentNode.removeChild(item);
       }
     });
 
-    console.log('[0] income items', incomeItems);
-    if (salaryAmount.value !== '' && !isNumber(salaryAmount.value)) {
-      start.setAttribute('disabled', 'disabled');
-    }
+    //remove Expenses fields
+    let minus = btnPlus[1];
+
+    expensesItems.forEach(item => {
+      if (item !== expensesItems[0] && item !== minus) {
+        item.parentNode.removeChild(item);
+      }
+    });
+
+    depositCheck.checked = false;
+
+    expensesPlus.style.display = 'block';
+    incomePlus.style.display = 'block';
   },
 
   //Функция ValidateSalaryAmount
@@ -201,6 +213,7 @@ let appData = {
     //Удаление кнопки-expensesPlus
     if (expensesItems.length === 3) {
       expensesPlus.style.display = 'none';
+      //display: inline-block;incomePlus.style.display = 'none';
     }
   },
 
