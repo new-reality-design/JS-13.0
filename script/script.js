@@ -159,9 +159,7 @@ let appData = {
         item.parentNode.removeChild(item);
       }
     });
-    let incomeItemsReset = document.querySelectorAll('.income-items');
-    incomeItems = incomeItemsReset;
-    // console.log('incomeItems: 167', incomeItems);
+    incomeItems = document.querySelectorAll('.income-items');
 
     //remove Expenses fields
     let minus = btnPlus[1];
@@ -171,9 +169,7 @@ let appData = {
         item.parentNode.removeChild(item);
       }
     });
-    let expensesItemsReset = document.querySelectorAll('.expenses-items');
-    expensesItems = expensesItemsReset;
-    // console.log('expensesItems: 178', expensesItems);
+    expensesItems = document.querySelectorAll('.expenses-items');
 
     depositCheck.checked = false;
 
