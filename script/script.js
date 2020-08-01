@@ -120,7 +120,7 @@ let appData = {
     expensesPlus.setAttribute('disabled', 'disabled');
     incomePlus.setAttribute('disabled', 'disabled');
     depositCheck.setAttribute('disabled', 'disabled');
-    periodSelect.setAttribute('disabled', 'disabled');
+    // periodSelect.setAttribute('disabled', 'disabled');
 
     cancel.addEventListener('click', this.reset);
   },
@@ -148,7 +148,7 @@ let appData = {
     expensesPlus.removeAttribute('disabled');
     incomePlus.removeAttribute('disabled');
     depositCheck.removeAttribute('disabled');
-    periodSelect.removeAttribute('disabled');
+    // periodSelect.removeAttribute('disabled');
 
     periodSelect.value = 1;
     periodAmount.innerHTML = periodSelect.value;
@@ -161,6 +161,9 @@ let appData = {
         item.parentNode.removeChild(item);
       }
     });
+    let incomeItemsReset = document.querySelectorAll('.income-items');
+    incomeItems = incomeItemsReset;
+    console.log('incomeItems: 167', incomeItems);
 
     //remove Expenses fields
     let minus = btnPlus[1];
@@ -170,6 +173,9 @@ let appData = {
         item.parentNode.removeChild(item);
       }
     });
+    let expensesItemsReset = document.querySelectorAll('.expenses-items');
+    expensesItems = expensesItemsReset;
+    console.log('expensesItems: 178', expensesItems);
 
     depositCheck.checked = false;
 
@@ -177,7 +183,6 @@ let appData = {
     incomePlus.style.display = 'block';
 
     // this.budgetMonth = 0;
-    // incomePeriodValue.value = '';
   },
 
   //Функция ValidateSalaryAmount
