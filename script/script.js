@@ -1,6 +1,7 @@
 'use strict';
 
 //started on 11/08/20-master
+//updated master from branch13
 
 let start = document.getElementById('start');
 start.setAttribute('disabled', 'disabled');
@@ -77,24 +78,6 @@ let appData = {
   percentDeposit: '',
   moneyDeposit: '',
   resetObject: function () {
-<<<<<<< HEAD
-    appData.budget = 0,
-      appData.income = {},
-      appData.incomeMonth = 0,
-      appData.addIncome = [],
-      appData.expenses = {},
-      appData.addExpenses = [],
-      appData.deposit = false,
-      appData.budgetDay = 0,
-      appData.budgetMonth = 0,
-      appData.expensesMonth = 0,
-      appData.percentDeposit = '',
-      appData.moneyDeposit = '';
-  },
-
-  start: function () {
-    // this.validateSalaryAmount();
-=======
     this.budget = 0,
       this.income = {},
       this.incomeMonth = 0,
@@ -110,7 +93,6 @@ let appData = {
   },
 
   start: function () {
->>>>>>> 4238222895f9c32a343b37cf49d98b7d2a9611b7
     this.resetObject();
 
     this.budget = +salaryAmount.value;
@@ -127,10 +109,6 @@ let appData = {
   },
 
   //Функция showCancelBtn
-<<<<<<< HEAD
-
-=======
->>>>>>> 4238222895f9c32a343b37cf49d98b7d2a9611b7
   showCancelBtn: function () {
 
     let allDataInputs = dataInputsSection.querySelectorAll('input[type=text]');
@@ -144,15 +122,8 @@ let appData = {
 
     expensesPlus.setAttribute('disabled', 'disabled');
     incomePlus.setAttribute('disabled', 'disabled');
-<<<<<<< HEAD
-
-    cancel.addEventListener('click', function () {
-      console.log('Нажата кнопка Отменить');
-    });
-=======
     depositCheck.setAttribute('disabled', 'disabled');
 
->>>>>>> 4238222895f9c32a343b37cf49d98b7d2a9611b7
     cancel.addEventListener('click', this.reset);
   },
 
@@ -173,39 +144,16 @@ let appData = {
     });
 
     start.style.display = 'block';
-<<<<<<< HEAD
-=======
     start.setAttribute('disabled', 'disabled');
->>>>>>> 4238222895f9c32a343b37cf49d98b7d2a9611b7
     cancel.style.display = 'none';
 
     expensesPlus.removeAttribute('disabled');
     incomePlus.removeAttribute('disabled');
-<<<<<<< HEAD
-=======
     depositCheck.removeAttribute('disabled');
->>>>>>> 4238222895f9c32a343b37cf49d98b7d2a9611b7
 
     periodSelect.value = 1;
     periodAmount.innerHTML = periodSelect.value;
 
-<<<<<<< HEAD
-    console.log('dlina income items', incomeItems.length);
-    console.log(' income items', incomeItems);
-
-    incomeItems.forEach(item => {
-      let plus = btnPlus[0],
-        minus = btnPlus[1];
-      if (item !== incomeItems[0] && item !== plus && item !== minus) {
-        item.parentNode.removeChild(item);
-      }
-    });
-
-    console.log('[0] income items', incomeItems);
-    if (salaryAmount.value !== '' && !isNumber(salaryAmount.value)) {
-      start.setAttribute('disabled', 'disabled');
-    }
-=======
     //remove Income fields
     let plus = btnPlus[0];
 
@@ -232,7 +180,6 @@ let appData = {
     incomePlus.style.display = 'block';
 
     appData.budgetMonth = 0;
->>>>>>> 4238222895f9c32a343b37cf49d98b7d2a9611b7
   },
 
   //Функция ValidateSalaryAmount
@@ -362,41 +309,20 @@ let appData = {
 
   //Функция для RangeInputValue
   getRangeValue: function () {
-<<<<<<< HEAD
-    console.log('getRangeValue STR 287 18:24', this);
-    periodAmount.innerHTML = periodSelect.value;
-    incomePeriodValue.value = appData.calcSavedMoney();//!!! 293
-=======
     periodAmount.innerHTML = periodSelect.value;
     incomePeriodValue.value = this.calcSavedMoney();
->>>>>>> 4238222895f9c32a343b37cf49d98b7d2a9611b7
   }
 };
 
 //Обработчики событий
 
-<<<<<<< HEAD
-start.addEventListener('click', appData.validateSalaryAmount);
-
-//1 Привязать контекст вызова функции start к appData 
 let calculateData = appData.start.bind(appData);
 start.addEventListener('click', calculateData);
 
-// start.addEventListener('click', appData.start);
-
-=======
-let calculateData = appData.start.bind(appData);
-start.addEventListener('click', calculateData);
-
->>>>>>> 4238222895f9c32a343b37cf49d98b7d2a9611b7
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
 incomePlus.addEventListener('click', appData.addIncomeBlock);
 
 let changeRangeValue = appData.getRangeValue.bind(appData);
 periodSelect.addEventListener('change', changeRangeValue);
-<<<<<<< HEAD
-// periodSelect.addEventListener('change', appData.getRangeValue);
-=======
->>>>>>> 4238222895f9c32a343b37cf49d98b7d2a9611b7
 
 salaryAmount.addEventListener('input', appData.validateSalaryAmount);
